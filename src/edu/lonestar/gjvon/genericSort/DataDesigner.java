@@ -1,5 +1,7 @@
 package edu.lonestar.gjvon.genericSort;
 
+import java.util.InputMismatchException;
+
 /**
  * Created by Gjvon on 9/29/16.
  */
@@ -28,13 +30,21 @@ public class DataDesigner {
         return false;
     }
 
-    //TODO: Build these methods. Check if user entered a double or an integer value.
-    public static <T extends Double> boolean isDoubleValue(T aDouble) {
-        return false;
+    public static boolean isDoubleValue(Object aDouble) {
+        try {
+            Double.parseDouble(String.valueOf(aDouble));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
-    //TODO: Build these methods. Check if user entered a double or an integer value.
-    public static <T extends Integer> boolean isIntegerValue(T aInteger) {
-        return false;
+    public static boolean isIntegerValue(Object aInteger) {
+        try {
+            Integer.parseInt(String.valueOf(aInteger));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 }
